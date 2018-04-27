@@ -20,7 +20,7 @@ public class OrderInfo {
  
     }
  
-    // Sử dụng cho Hibernate Query.
+    // Used for Hibernate Query.
     public OrderInfo(String id, Date orderDate, int orderNum, //
             double amount, String customerName, String customerAddress, //
             String customerEmail, String customerPhone) {

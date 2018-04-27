@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import btm.training.springboot.shoponline.model.CartInfo;
 
 public class Utils {
-	// Thông tin các sản phẩm trong giỏ hàng, được lưu trữ trong Session.
+	// Item's information in shopping cart, stored in session
     public static CartInfo getCartInSession(HttpServletRequest request) {
   
         CartInfo cartInfo = (CartInfo) request.getSession().getAttribute("myCart");

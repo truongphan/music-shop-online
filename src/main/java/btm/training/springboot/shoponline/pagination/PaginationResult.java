@@ -32,7 +32,7 @@ public class PaginationResult<E> {
 	        boolean hasResult = resultScroll.first();
 	 
 	        if (hasResult) {
-	            // Cuộn tới vị trí:
+	            // Roll to location:
 	            hasResult = resultScroll.scroll(fromRecordIndex);
 	 
 	            if (hasResult) {
@@ -45,11 +45,11 @@ public class PaginationResult<E> {
 	 
 	            }
 	 
-	            // Chuyển tới bản ghi cuối
+	            // change to last record
 	            resultScroll.last();
 	        }
 	 
-	        // Tổng số bản ghi.
+	        // Summary of records.
 	        this.totalRecords = resultScroll.getRowNumber() + 1;
 	        this.currentPage = pageIndex + 1;
 	        this.list = results;
@@ -79,11 +79,11 @@ public class PaginationResult<E> {
 	        int begin = current - this.maxNavigationPage / 2;
 	        int end = current + this.maxNavigationPage / 2;
 	 
-	        // Trang đầu tiên
+	        // The first page
 	        navigationPages.add(1);
 	        if (begin > 2) {
 	 
-	            // Dùng cho '...'
+	            // Used for '...'
 	            navigationPages.add(-1);
 	        }
 	 
@@ -95,10 +95,10 @@ public class PaginationResult<E> {
 	 
 	        if (end < this.totalPages - 2) {
 	 
-	            // Dùng cho '...'
+	            // Used for  '...'
 	            navigationPages.add(-1);
 	        }
-	        // Trang cuối cùng.
+	        // The last page.
 	        navigationPages.add(this.totalPages);
 	    }
 	 

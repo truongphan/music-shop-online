@@ -26,7 +26,7 @@ public class OrderDetail implements Serializable {
 	private double amount;
 	@Column(name="PRICE", nullable = false)
 	private double price;
-	@Column(name="QUANTITY", nullable = false)
+	@Column(name="QUANITY", nullable = false)
 	private int quanity;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="ORDER_ID", nullable = false, foreignKey=@ForeignKey(name="ORDER_DETAIL_ORD_FK"))
@@ -56,8 +56,8 @@ public class OrderDetail implements Serializable {
 	public int getQuanity() {
 		return quanity;
 	}
-	public void setQuanity(int quantity) {
-		this.quanity = quantity;
+	public void setQuanity(int quanity) {
+		this.quanity = quanity;
 	}
 	public Order getOrder() {
 		return order;

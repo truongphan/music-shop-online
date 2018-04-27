@@ -50,13 +50,13 @@ public class MainController {
 		}
 		System.out.println("Target=" + target);
 
-		// Trường hợp update SL trên giỏ hàng.
+		// For case update SL on shop cart
 		// (@ModelAttribute("cartForm") @Validated CartInfo cartForm)
 		if (target.getClass() == CartInfo.class) {
 
 		}
 
-		// Trường hợp save thông tin khách hàng.
+		// For case save customer's information
 		// (@ModelAttribute @Validated CustomerInfo customerForm)
 		else if (target.getClass() == CustomerForm.class) {
 			dataBinder.setValidator(customerFormValidator);
@@ -73,7 +73,7 @@ public class MainController {
 		return "index";
 	}
 
-	// Danh sách sản phẩm.
+	// Product list.
 	@RequestMapping({ "/productList" })
 	public String listProductHandler(Model model, //
 			@RequestParam(value = "name", defaultValue = "") String likeName,
@@ -129,7 +129,7 @@ public class MainController {
 		return "redirect:/shoppingCart";
 	}
 
-	// POST: Cập nhập số lượng cho các sản phẩm đã mua.
+	// POST: Updated Quantity for items was bougth.
 	@RequestMapping(value = { "/shoppingCart" }, method = RequestMethod.POST)
 	public String shoppingCartUpdateQty(HttpServletRequest request, //
 			Model model, //
@@ -141,7 +141,7 @@ public class MainController {
 		return "redirect:/shoppingCart";
 	}
 
-	// GET: Hiển thị giỏ hàng.
+	// GET: Display shopping cart.
 	@RequestMapping(value = { "/shoppingCart" }, method = RequestMethod.GET)
 	public String shoppingCartHandler(HttpServletRequest request, Model model) {
 		CartInfo myCart = Utils.getCartInSession(request);
@@ -150,7 +150,7 @@ public class MainController {
 		return "shoppingCart";
 	}
 
-	// GET: Nhập thông tin khách hàng.
+	// GET: Enter customer's information.
 	@RequestMapping(value = { "/shoppingCartCustomer" }, method = RequestMethod.GET)
 	public String shoppingCartCustomerForm(HttpServletRequest request, Model model) {
 
@@ -169,7 +169,7 @@ public class MainController {
 		return "shoppingCartCustomer";
 	}
 
-	// POST: Save thông tin khách hàng.
+	// POST: Save customer's information.
 	@RequestMapping(value = { "/shoppingCartCustomer" }, method = RequestMethod.POST)
 	public String shoppingCartCustomerSave(HttpServletRequest request, //
 			Model model, //
@@ -179,7 +179,7 @@ public class MainController {
 
 		if (result.hasErrors()) {
 			customerForm.setValid(false);
-			// Forward tới trang nhập lại.
+			// Forward to re-enter page.
 			return "shoppingCartCustomer";
 		}
 
@@ -191,7 +191,7 @@ public class MainController {
 		return "redirect:/shoppingCartConfirmation";
 	}
 
-	// GET: Xem lại thông tin để xác nhận.
+	// GET: review information to confirm.
 	@RequestMapping(value = { "/shoppingCartConfirmation" }, method = RequestMethod.GET)
 	public String shoppingCartConfirmationReview(HttpServletRequest request, Model model) {
 		CartInfo cartInfo = Utils.getCartInSession(request);
@@ -208,9 +208,8 @@ public class MainController {
 		return "shoppingCartConfirmation";
 	}
 	
-	 // POST: Gửi đơn hàng (Save).
+	 // POST: Send order (Save).
     @RequestMapping(value = { "/shoppingCartConfirmation" }, method = RequestMethod.POST)
- 
     public String shoppingCartConfirmationSave(HttpServletRequest request, Model model) {
         CartInfo cartInfo = Utils.getCartInSession(request);
  
@@ -228,10 +227,10 @@ public class MainController {
             return "shoppingCartConfirmation";
         }
  
-        // Xóa giỏ hàng khỏi session.
+        // Delete shopping cart from session.
         Utils.removeCartInSession(request);
  
-        // Lưu thông tin đơn hàng cuối đã xác nhận mua.
+        // Save last order finalize
         Utils.storeLastOrderedCartInSession(request, cartInfo);
  
         return "redirect:/shoppingCartFinalize";

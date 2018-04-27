@@ -16,7 +16,7 @@ public class ProductFormValidator implements Validator {
 	@Autowired
 	private ProductDAO productDAO;
 
-	// Validator này chỉ dùng để kiểm tra class ProductForm.
+	// this validator was used only to check to CustomerForm.
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return clazz == ProductForm.class;
@@ -26,7 +26,7 @@ public class ProductFormValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		ProductForm productForm = (ProductForm) target;
 		
-		// Kiểm tra các trường (field) của ProductForm.
+		// Checking CustomerForm's fields.
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "code", "NotEmpty.productForm.code");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "NotEmpty.productForm.name");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "price", "NotEmpty.productForm.price");

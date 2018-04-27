@@ -13,7 +13,7 @@ public class CustomerFormValidator implements Validator {
 
 	private EmailValidator emailValidator = EmailValidator.getInstance();
 
-	// Validator này chỉ dùng để kiểm tra đối với CustomerForm.
+	// this validator was used only to check to CustomerForm.
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return clazz == CustomerForm.class;
@@ -24,7 +24,7 @@ public class CustomerFormValidator implements Validator {
 
 		CustomerForm custInfo = (CustomerForm) target;
 
-		// Kiểm tra các trường (field) của CustomerForm.
+		// Checking CustomerForm's fields.
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "NotEmpty.customerForm.name");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty.customerForm.email");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "NotEmpty.customerForm.address");

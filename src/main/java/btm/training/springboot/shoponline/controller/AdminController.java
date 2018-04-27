@@ -29,6 +29,7 @@ import btm.training.springboot.shoponline.validator.ProductFormValidator;
 
 @Controller
 public class AdminController {
+	
 	@Autowired
     private OrderDAO orderDAO;
  
@@ -51,10 +52,9 @@ public class AdminController {
         }
     }
  
-    // GET: Hiển thị trang login
+    // GET: display login page
     @RequestMapping(value = { "/admin/login" }, method = RequestMethod.GET)
     public String login(Model model) {
- 
         return "login";
     }
  
@@ -88,7 +88,7 @@ public class AdminController {
         return "orderList";
     }
  
-    // GET: Hiển thị product
+    // GET:Display product page
     @RequestMapping(value = { "/admin/product" }, method = RequestMethod.GET)
     public String product(Model model, @RequestParam(value = "code", defaultValue = "") String code) {
         ProductForm productForm = null;

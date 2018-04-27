@@ -8,6 +8,7 @@ public class ProductForm {
 	private String code;
     private String name;
     private double price;
+    private byte[] image;
  
     private boolean newProduct = false;
  
@@ -22,6 +23,7 @@ public class ProductForm {
         this.code = product.getCode();
         this.name = product.getName();
         this.price = product.getPrice();
+        this.setImage(product.getImage());
     }
  
     public String getCode() {
@@ -63,4 +65,12 @@ public class ProductForm {
     public void setNewProduct(boolean newProduct) {
         this.newProduct = newProduct;
     }
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
 }

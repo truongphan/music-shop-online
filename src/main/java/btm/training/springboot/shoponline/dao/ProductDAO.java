@@ -79,7 +79,7 @@ public class ProductDAO {
         if (isNew) {
             session.persist(product);
         }
-        // Nếu có lỗi tại DB, ngoại lệ sẽ ném ra ngay lập tức
+        // if have any error at DB, exception will be throwed immediately
         session.flush();
     }
  
